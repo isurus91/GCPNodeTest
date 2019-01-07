@@ -1,174 +1,112 @@
-import React, { Component } from "react";
-import { Panel, PanelGroup, Button, Collapse, Well, Navbar, NavDropdown, MenuItem, Jumbotron, Table, Media, Image } from "react-bootstrap";
-import { render } from "react-dom";
-
-
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import { Table, Jumbotron, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem, Collapse, Well, Panel } from 'react-bootstrap';
 
 class App extends Component {
-  constructor(props, context) {
-    super(props, context);
+    constructor(props, context) {
+        super(props, context);
 
-    this.state = {
-      open: false
-    };
-  }
-
-  render() {
-    return (
-      <div className="row jumbotron jumbotron-3" style={{ 'padding': '10px' }}>
-        <div className="col-12 mx-auto d-flex justify-content-center flex-wrap p-3 mb-2 bg-light text-dark" inline style={{ 'height': '10%', 'padding': '5px' }}>
-          <Jumbotron style={{ 'width': '100%', 'height': '10%' }} >
-            <h1 className="text-center">COGNITE <img width="200px" src={require('./cognite.png')} style={{ 'float': 'right', 'top': '0%' }} className="img-responsive center-block" alt="Responsive image" /></h1>
-            <h1 className="text-center">SERVICE HEALTH DASHBOARD</h1>
-          </Jumbotron>
-        </div>
-        <div className="col-12" cols style={{ 'padding': '10px' }}>
-          <Table responsive>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Service Name</th>
-                <th>Protocol</th>
-                <th>Uptime</th>
-                <th>Status</th>
-                <th>Pingdom</th>
-                <th>Options</th>
-              </tr>
-            </thead>
-          </Table>
-        </div>
-        <div className="col-12" >
-          <Panel defaultExpanded>
-            <Panel.Heading>
-              <Panel.Title toggle>
-                <Table responsive>
-                  <tr>
-                    <td>1</td>
-                    <td>cognite.api</td>
-                    <td>HTTP</td>
-                    <td>20 d</td>
-                    <td><Button bsStyle="success" className="btn-circle"></Button></td>
-                    <td>224 ms</td>
-                    <td><Button bsStyle="info" onClick={() => this.setState({ open: !this.state.open })}>View more</Button></td>
-                  </tr>
-                </Table>
-              </Panel.Title>
-            </Panel.Heading>
-            <Panel.Collapse timeout='500'>
-              <Panel.Body>
-                <div>
-                  <iframe src="https://grafana.cognite.ai/d-solo/000000009/tsdb-subscriber?panelId=7&orgId=1&from=1546497503593&to=1546501103593&var-subscription_id=All&var-cdp=multitenant&var-topic_id=All" width="450" height="200" frameborder="0"></iframe>
+        this.state = {
+            open: false
+        };
+    }
+    render() {
+        return (
+            <div>
+                <div class="jumbotron jumbotron-fluid table" style={{ 'height': '20%', }}>
+                    <div class="container">
+                        <h1 className="text-center">COGNITE <img width="200px" src={require('./cognite.png')} style={{ 'float': 'right' }} className="img-responsive center-block" alt="Responsive image" /></h1>
+                        <h1 className="text-center">SERVICE HEALTH DASHBOARD</h1>
+                    </div>
                 </div>
-              </Panel.Body>
-            </Panel.Collapse>
-          </Panel>
-        </div>
-        <div className="col-12">
-          <Panel defaultExpanded >
-            <Panel.Heading>
-              <Panel.Title toggle>
-                <Table responsive>
-                  <tr>
-                    <td>2</td>
-                    <td>bigtable.raw</td>
-                    <td>HTTP</td>
-                    <td>20 d</td>
-                    <td><Button bsStyle="warning" className="btn-circle"></Button></td>
-                    <td>224 ms</td>
-                    <td><Button bsStyle="info" href="https://www.cognite.com/">View more</Button></td>
-                  </tr>
-                </Table>
-              </Panel.Title>
-            </Panel.Heading>
-            <Panel.Collapse timeout='1'>
-              <Panel.Body>
-                <div>
-                  <iframe src="https://snapshot.raintank.io/dashboard-solo/snapshot/y7zwi2bZ7FcoTlB93WN7yWO4aMiz3pZb?from=1493369923321&to=1493377123321&panelId=4" width="650" height="300" frameborder="0"></iframe>
-                </div>
-              </Panel.Body>
-            </Panel.Collapse>
-          </Panel>
-        </div>
-        <div className="col-12">
-          <Panel defaultExpanded bsStyle="danger">
-            <Panel.Heading>
-              <Panel.Title toggle>
-                <Table responsive>
-                  <tr>
-                    <td>3</td>
-                    <td>bigtable.tsdb</td>
-                    <td>HTTP</td>
-                    <td>20 d</td>
-                    <td><Button bsStyle="danger" className="btn-circle"></Button></td>
-                    <td>224 ms</td>
-                    <td><Button bsStyle="info" onClick={() => this.setState({ open: !this.state.open })}>View more</Button></td>
-                  </tr>
-                </Table>
-              </Panel.Title>
-            </Panel.Heading>
-            <Panel.Collapse timeout='500'>
-              <Panel.Body>
-                <div>
-                  <iframe src="https://grafana.cognite.ai/d-solo/000000009/tsdb-subscriber?panelId=7&orgId=1&from=1546495867861&to=1546499467862&var-subscription_id=All&var-cdp=multitenant&var-topic_id=All" width="450" height="200" frameborder="0"></iframe>
-                </div>
-              </Panel.Body>
-            </Panel.Collapse>
-          </Panel>
-        </div>
-        <div className="col-12">
-          <Panel defaultExpanded>
-            <Panel.Heading>
-              <Panel.Title toggle>
-                <Table responsive>
-                  <tr>
-                    <td>4</td>
-                    <td>3Dserive</td>
-                    <td>HTTP</td>
-                    <td>20 d</td>
-                    <td><Button bsStyle="success" className="btn-circle"></Button></td>
-                    <td>224 ms</td>
-                    <td><Button bsStyle="info" onClick={() => this.setState({ open: !this.state.open })}>View more</Button></td>
-                  </tr>
-                </Table>
-              </Panel.Title>
-            </Panel.Heading>
-            <Panel.Collapse timeout='1'>
-              <Panel.Body>
-                <div>
-                  <iframe src="https://snapshot.raintank.io/dashboard-solo/snapshot/y7zwi2bZ7FcoTlB93WN7yWO4aMiz3pZb?from=1493369923321&to=1493377123321&panelId=4" width="650" height="300" frameborder="0"></iframe>
-                </div>
-              </Panel.Body>
-            </Panel.Collapse>
-          </Panel>
-        </div>
-        <div className="col-12">
-          <Panel defaultExpanded>
-            <Panel.Heading>
-              <Panel.Title toggle>
-                <Table responsive>
-                  <tr>
-                    <td>5</td>
-                    <td>pubsub.topics</td>
-                    <td>HTTP</td>
-                    <td>20 d</td>
-                    <td><Button bsStyle="warning" className="btn-circle"></Button></td>
-                    <td>224 ms</td>
-                    <td><Button bsStyle="info" onClick={() => this.setState({ open: !this.state.open })}>View more</Button></td>
-                  </tr>
-                </Table>
-              </Panel.Title>
-            </Panel.Heading>
-            <Panel.Collapse timeout='1'>
-              <Panel.Body>
-                <div>
-                  <iframe src="https://snapshot.raintank.io/dashboard-solo/snapshot/y7zwi2bZ7FcoTlB93WN7yWO4aMiz3pZb?from=1493369923321&to=1493377123321&panelId=4" width="650" height="300" frameborder="0"></iframe>
-                </div>
-              </Panel.Body>
-            </Panel.Collapse>
-          </Panel>
-       </div>
-      </div >
-    );
-  }
+                <table className="table table-hover" >
+                    <thead >
+                        <tr>
+                            <th>Service Name</th>
+                            <th>Protocol</th>
+                            <th>Uptime</th>
+                            <th>Status</th>
+                            <th>Pingdom</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-toggle="collapse" data-target="#accordion1" className="clickable">
+                            <td>cognite.api</td>
+                            <td>HTTP</td>
+                            <td>20 d</td>
+                            <td><Button bsStyle="success" className="btn-circle"></Button></td>
+                            <td>224 ms</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <div id="accordion1" className="collapse">
+                                    <iframe src="https://grafana.cognite.ai/d-solo/000000009/tsdb-subscriber?panelId=7&orgId=1&from=1546497503593&to=1546501103593&var-subscription_id=All&var-cdp=multitenant&var-topic_id=All" width="500" height="400" frameborder="0"></iframe>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-toggle="collapse" data-target="#accordion2" className="clickable">
+                            <td>bigtable.raw</td>
+                            <td>HTTP</td>
+                            <td>20 d</td>
+                            <td><Button bsStyle="warning" className="btn-circle"></Button></td>
+                            <td>224 ms</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <div id="accordion2" className="collapse">
+                                    <iframe src="https://grafana.cognite.ai/d-solo/000000009/tsdb-subscriber?panelId=7&orgId=1&from=1546497503593&to=1546501103593&var-subscription_id=All&var-cdp=multitenant&var-topic_id=All"  width="500" height="400" frameborder="0"></iframe>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-toggle="collapse" data-target="#accordion3" className="clickable alert-danger">
+                            <td>bigtable.tsdb</td>
+                            <td>HTTP</td>
+                            <td>20 d</td>
+                            <td><Button bsStyle="danger" className="btn-circle"></Button></td>
+                            <td>224 ms</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <div id="accordion3" className="collapse">
+                                    <iframe src="https://grafana.cognite.ai/d-solo/000000009/tsdb-subscriber?panelId=7&orgId=1&from=1546497503593&to=1546501103593&var-subscription_id=All&var-cdp=multitenant&var-topic_id=All"  width="500" height="400" frameborder="0"></iframe>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-toggle="collapse" data-target="#accordion4" className="clickable">
+                            <td>3Dserivce</td>
+                            <td>HTTP</td>
+                            <td>20 d</td>
+                            <td><Button bsStyle="success" className="btn-circle"></Button></td>
+                            <td>224 ms</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <div id="accordion4" className="collapse">
+                                    <iframe src="https://grafana.cognite.ai/d-solo/000000009/tsdb-subscriber?panelId=7&orgId=1&from=1546497503593&to=1546501103593&var-subscription_id=All&var-cdp=multitenant&var-topic_id=All"  width="500" height="400" frameborder="0"></iframe>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-toggle="collapse" data-target="#accordion5" classNames="clickable">
+                            <td>pubsub.topics</td>
+                            <td>HTTP</td>
+                            <td>20 d</td>
+                            <td><Button bsStyle="warning" className="btn-circle"></Button></td>
+                            <td>224 ms</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <div id="accordion5" className="collapse">
+                                    <iframe src="https://grafana.cognite.ai/d-solo/000000009/tsdb-subscriber?panelId=7&orgId=1&from=1546497503593&to=1546501103593&var-subscription_id=All&var-cdp=multitenant&var-topic_id=All"  width="500" height="400" frameborder="0"></iframe>
+                                    <iframe src="https://grafana.cognite.ai/d-solo/000000009/tsdb-subscriber?panelId=7&orgId=1&from=1546497503593&to=1546501103593&var-subscription_id=All&var-cdp=multitenant&var-topic_id=All"  width="500" height="400" frameborder="0"></iframe>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        );
+    }
 }
-export default App
+
+export default App;
